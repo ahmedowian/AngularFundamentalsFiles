@@ -1,6 +1,7 @@
 <!doctype html>
 <html lang="en" ng-app="eventsApp">
 <head>
+    <base href="/"/>
     <meta charset="utf-8">
     <title>Event Registration</title>
     <link rel="stylesheet" href="/css/bootstrap.min.css"/>
@@ -8,10 +9,10 @@
 </head>
 <body ng-cloak>
 <div class="container">
-    <div class="navbar">
+    <div class="navbar" ng-controller="MainMenuCtrl">
         <div class="navbar-inner">
             <ul class="nav">
-                <li><a href="#/newEvent">Create Event</a></li>
+                <li><a href="#" ng-click="createEvent()">Create Event</a></li>
             </ul>
         </div>
     </div>
@@ -28,8 +29,12 @@
 <script src="/lib/angular/angular-sanitize.js"></script>
 <script src="/js/app.js"></script>
 <script src="/js/services/EventData.js"></script>
+<script src="/js/services/GravatarUrlBuilder.js"></script>
 <script src="/js/controllers/EventCtrl.js"></script>
+<script src="/js/controllers/MainMenuCtrl.js"></script>
+<script src="/js/controllers/EventListCtrl.js"></script>
 <script src="/js/controllers/EditEventCtrl.js"></script>
+<script src="/js/controllers/EditProfileController.js"></script>
 <script src="/js/filters.js"></script>
 </body>
 </html>
