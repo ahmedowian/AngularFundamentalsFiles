@@ -17,21 +17,13 @@
       </div>
       <div ng-controller="EventCtrl">
          <img ng-src="{{event.imageUrl}}" alt="{{event.name}}" />
+         <button type="button" class="btn btn-primary" ng-click="scrollToSession()">Scroll</button>
+
          <div class="row">
             <div class="spann11">
-               <h2 ng-class="myClass" ng-bind-template="{{event.name | uppercase}} {{event.date}}"></h2>
+               <h2 ng-class="myClass" ng-bind-template="{{event.name | uppercase}}"></h2>
             </div>
          </div>
-
-         <button class="btn" ng-disabled="myDisabled">Disabled</button>
-       
-         <div ng-non-bindable>{{1 + 2}}</div>
-
-         <div ng-bind-html="snippet">some title</div>
-         <div ng-bind-html-unsafe="snippet">some title</div>
-
-         <h2 ng-show="boolValue">Show This</h2>   
-         <h2 ng-hide="boolValue">Hide This</h2>
 
          <div class="row">
             <div class="span3">
@@ -48,10 +40,6 @@
             </div>
       </div>
 
-      {{ 3 * 10 + 'hello ' + 'world' + ['a',2,'c'][1] | uppercase}} 
-      <div>{{ 3 | number:2}}</div>
-      <pre>{{ event | json}}</pre>
- 
       <hr />
             
       <h3>Sessions</h3>
@@ -66,10 +54,11 @@
          <option value="introductory">Introductory</option>
          <option value="intermediate">Intermediate</option>
          <option value="advanced">Advanced</option>
-      </select
+      </select>
  
       <ul class="thumbnails">
-         <li ng-repeat="session in event.sessions | orderBy:sortOrder | filter:levelFilter">
+         <li ng-repeat="session in event.sessions | orderBy:sortOrder | filter:levelFilter"
+                 class="span11" id="session{{session.id}}">
             <div class="row session">
                <div class="span0 well votingWidget">
                   <div class="votingButton" ng-click="upVoteSession(session)">
@@ -95,14 +84,18 @@
          </li>
       </ul>
    </div>
+   </div>
+
 
    <script src="/lib/jquery.min.js"></script>
    <script src="/lib/underscore-1.4.4.min.js"></script>
    <script src="/lib/bootstrap.min.js"></script>
    <script src="/lib/angular/angular.js"></script>
+   <script src="/lib/angular/angular-resource.js"></script>
    <script src="/lib/angular/angular-sanitize.js"></script>
    <script src="/js/app.js"></script>
    <script src="/js/controllers/EventCtrl.js"></script>
+   <script src="/js/services/EventData.js"></script>
    <script src="/js/filters.js"></script>
 </body>
 </html>
