@@ -32,7 +32,11 @@ var eventsApp = angular.module('eventsApp', ['ngResource', 'ngRoute'])
             {
                 template:'Ahmed Owian\'s Angular Fundamentals App<br/>Version 1'
             });
-
+        $routeProvider.when('/sampleDirective',
+            {
+                templateUrl: 'templates/SampleDirective.html',
+                controller: 'SampleDirectiveCtrl'
+            });
         $routeProvider.otherwise({redirectTo:'/events'});
 
         $locationProvider.html5Mode(true);
